@@ -33,13 +33,13 @@ updated: October 2026
 2. Readings go up to a ThingSpeak channel so I can check them remotely.
 3. I built it to keep a better environment for my house plants.
 
-<!--
-Photos: put images in public/images/ and uncomment.
 <figure>
-  <img src="/images/stm32-sensor-boards.jpg" alt="Assembled Rev B boards" />
-  <figcaption>Assembled Rev B boards, and the layout in Altium.</figcaption>
+  <div class="figure-pair">
+    <img src="/images/stm32-sensor-boards.jpg" width="599" height="800" loading="lazy" alt="Six assembled Rev B sensor boards, each with an STM32G4, ESP8266 module and connectors" style="flex: 0.749 1 0" />
+    <img src="/images/stm32-sensor-layout.jpg" width="759" height="440" loading="lazy" alt="3D Altium render of the board, labeled LCD, SWD, USB and GPIO, with the STM32 in the center and the ESP8266 on the right" style="flex: 1.725 1 0" />
+  </div>
+  <figcaption>Rev B boards, built after Rev A turned up a few small design issues, and the layout in Altium.</figcaption>
 </figure>
--->
 
 ## Specifications
 

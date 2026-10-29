@@ -413,6 +413,24 @@ table.data tr:last-child td,
   color: var(--ink-2);
 }
 
+.figure-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.figure-pair img {
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+@media (max-width: 640px) {
+  .figure-pair img {
+    flex: 1 1 100% !important;
+  }
+}
+
 /* Block diagram (raw HTML inside markdown) */
 .block-diagram {
   display: flex;
