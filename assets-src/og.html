@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: 'Archivo Narrow'; src: url(fonts/ArchivoNarrow-600.woff2) format('woff2'); font-weight: 400 700; }
+@font-face { font-family: 'Barlow Condensed'; src: url(fonts/BarlowCondensed-700.woff2) format('woff2'); font-weight: 700; }
+@font-face { font-family: 'JetBrains Mono'; src: url(fonts/JetBrainsMono-500.woff2) format('woff2'); font-weight: 500; }
+:root { --ink:#10233F; --ink2:#3B4A5E; --rule:#9AA6B5; --acc:#1D5FBF; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 630px; }
+body { background: #E9ECEF; padding: 28px; font-family: 'Archivo Narrow', sans-serif; color: var(--ink); }
+.sheet { height: 100%; border: 3px solid var(--ink); padding: 10px; background-color: #fff;
+  background-image: linear-gradient(#EEF1F5 1px, transparent 1px), linear-gradient(90deg, #EEF1F5 1px, transparent 1px); background-size: 28px 28px; }
+.inner { height: 100%; border: 1.5px solid var(--ink); display: flex; flex-direction: column; }
+.zones { display: grid; grid-template-columns: repeat(6, 1fr); font: 500 13px/1 'JetBrains Mono'; color: var(--ink2); }
+.zones span { padding: 7px; text-align: center; border-right: 1px solid var(--rule); }
+.zones span:last-child { border-right: 0; }
+.top { border-bottom: 1.5px solid var(--ink); } .bot { border-top: 1.5px solid var(--ink); }
+.body { flex: 1; display: flex; gap: 36px; padding: 34px 40px; align-items: stretch; }
+.tb { flex: 0 0 430px; border: 3px solid var(--ink); background: #fff; display: flex; flex-direction: column; }
+.cell { padding: 14px 20px; border-bottom: 1.5px solid var(--ink); }
+.cell:last-child { border-bottom: 0; }
+.k { font: 500 12px/1.4 'JetBrains Mono'; letter-spacing: .08em; color: var(--ink2); }
+h1 { font-family: 'Barlow Condensed'; font-weight: 700; font-size: 104px; line-height: .86; text-transform: uppercase; margin-top: 8px; }
+.v { font-weight: 600; font-size: 24px; }
+.right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.sec { font: 500 15px/1 'JetBrains Mono'; letter-spacing: .1em; color: var(--acc); margin-bottom: 14px; }
+table { width: 100%; border-collapse: collapse; background: #fff; border: 1.5px solid var(--ink); }
+td { padding: 13px 16px; border-bottom: 1px solid var(--rule); font-size: 21px; font-weight: 600; white-space: nowrap; }
+td.m { font: 500 15px/1 'JetBrains Mono'; color: var(--ink2); width: 54px; font-weight: 500; }
+td.s { font: 500 14px/1 'JetBrains Mono'; color: var(--ink); width: 118px; text-align: right; font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+.mark { color: var(--acc); }
+.url { font: 500 26px/1 'JetBrains Mono'; color: var(--acc); }
+</style></head>
+<body><div class="sheet"><div class="inner">
+<div class="zones top"><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+<div class="body">
+  <div class="tb">
+    <div class="cell" style="border-bottom-width:3px; padding: 20px 22px 22px"><p class="k">TITLE</p><h1>Joel<br>Anthony</h1></div>
+    <div class="cell"><p class="k">DISCIPLINE</p><p class="v">Electrical Engineer</p></div>
+    <div class="cell"><p class="k">LOCATION</p><p class="v">Indianapolis, IN</p></div>
+  </div>
+  <div class="right">
+    <div>
+      <p class="sec">PROJECTS — HARDWARE</p>
+      <table>
+        <tr><td class="m">01</td><td>STM32 + FPGA control platform</td><td class="s"><span class="mark">●</span> ACTIVE</td></tr>
+        <tr><td class="m">02</td><td>STM32 + FPGA self-balancing robot</td><td class="s"><span class="mark">◌</span> PLANNED</td></tr>
+        <tr><td class="m">03</td><td>STM32 temperature and humidity monitor</td><td class="s"><span class="mark">○</span> DONE</td></tr>
+        <tr><td class="m">04</td><td>CORDIC engine for Tiny Tapeout</td><td class="s"><span class="mark">●</span> ACTIVE</td></tr>
+      </table>
+    </div>
+    <p class="url">joel0328.github.io</p>
+  </div>
+</div>
+<div class="zones bot"><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+</div></div></body></html>

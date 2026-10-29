@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { STATUS_MARK } from '../lib/status';
+
+interface Props {
+  rows: { project: CollectionEntry<'projects'>; num: number }[];
+}
+
+const { rows } = Astro.props;
+
+function linkFor(p: CollectionEntry<'projects'>): string | undefined {
+  if (p.data.page) return `/projects/${p.id}/`;
+  return p.data.href;
+}
+---
+
+<div class="table-wrap">
+  <table class="data">
+    <thead>
+      <tr>
+        <th scope="col" class="col-item">ITEM</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col" class="col-status">STATUS</th>
+        <th scope="col" class="col-year">YEAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map(({ project: p, num }) => {
+          const href = linkFor(p);
+          return (
+            <tr>
+              <td class="mono">{num}</td>
+              <td>
+                <p class="row-title">{href ? <a href={href}>{p.data.title}</a> : p.data.title}</p>
+                <p class="row-sub">{p.data.summary}</p>
+                <p class="row-meta mono" aria-hidden="true">
+                  <span class="mark">{STATUS_MARK[p.data.status]}</span> {p.data.status.toUpperCase()} · {p.data.year}
+                </p>
+              </td>
+              <td class="mono c-status">
+                <span class="mark" aria-hidden="true">
+                  {STATUS_MARK[p.data.status]}
+                </span>{' '}
+                {p.data.status.toUpperCase()}
+              </td>
+              <td class="mono c-year">{p.data.year}</td>
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+</div>

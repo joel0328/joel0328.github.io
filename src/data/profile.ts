@@ -29,6 +29,16 @@ export const profile = {
     "On my own time I design embedded hardware. Right now that's an STM32 + FPGA platform for robotics controls. My projects are below.",
   ],
 
+  // Same groups as the resume.
+  skills: [
+    { label: 'EMBEDDED', items: 'C, STM32 (HAL, STM32CubeIDE, Keil µVision), CAN, UART/SPI/I2C, six-step motor control' },
+    { label: 'HARDWARE', items: 'Altium Designer, KiCad, OrCAD Capture CIS, PSpice, Fusion 360, PCB bring-up and debug' },
+    { label: 'FPGA / RTL', items: 'Verilog, Xilinx Vivado, Icarus Verilog, Basys 3 and Arty A7' },
+    { label: 'TEST', items: 'LabVIEW, NI-XNET, Vehicle Spy / ValueCAN, Magtrol dynamometers, end-of-line test' },
+    { label: 'PROCESS', items: 'DFMEA, PPAP, RFQ specifications, root-cause analysis, supplier development' },
+    { label: 'SOFTWARE', items: 'Python, Git (GitHub, Bitbucket), Linux / Ubuntu, Raspberry Pi' },
+  ],
+
   experience: [
     {
       date: '2024–',

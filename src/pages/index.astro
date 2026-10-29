@@ -2,14 +2,15 @@
 import { getCollection } from 'astro:content';
 import Sheet from '../layouts/Sheet.astro';
 import { profile } from '../data/profile';
+import ProjectTable from '../components/ProjectTable.astro';
 import { STATUS_MARK, STATUS_ORDER } from '../lib/status';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-
-function linkFor(p: (typeof projects)[number]): string | undefined {
-  if (p.data.page) return `/projects/${p.id}/`;
-  return p.data.href;
-}
+// Numbering runs across both groups, in `order`, so it matches the project pages.
+const numbered = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((project, i) => ({ project, num: i + 1 }));
+const hardware = numbered.filter((r) => r.project.data.group === 'hardware');
+const software = numbered.filter((r) => r.project.data.group === 'software');
 ---
 
 <Sheet title={profile.name} description={profile.description} variant="home">
@@ -50,50 +51,22 @@ function linkFor(p: (typeof projects)[number]): string | undefined {
 
       <section class="stack">
         <div class="sec-row">
-          <h2 class="sec">PROJECTS</h2>
+          <h2 class="sec">PROJECTS — HARDWARE</h2>
           <p class="legend">
             {STATUS_ORDER.map((s) => <span>{STATUS_MARK[s]} {s}</span>)}
           </p>
         </div>
-        <div class="table-wrap">
-          <table class="data">
-            <thead>
-              <tr>
-                <th scope="col" class="col-item">ITEM</th>
-                <th scope="col">DESCRIPTION</th>
-                <th scope="col" class="col-status">STATUS</th>
-                <th scope="col" class="col-year">YEAR</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                projects.map((p, i) => {
-                  const href = linkFor(p);
-                  return (
-                    <tr>
-                      <td class="mono">{i + 1}</td>
-                      <td>
-                        <p class="row-title">{href ? <a href={href}>{p.data.title}</a> : p.data.title}</p>
-                        <p class="row-sub">{p.data.summary}</p>
-                        <p class="row-meta mono" aria-hidden="true">
-                          <span class="mark">{STATUS_MARK[p.data.status]}</span> {p.data.status.toUpperCase()} · {p.data.year}
-                        </p>
-                      </td>
-                      <td class="mono c-status">
-                        <span class="mark" aria-hidden="true">
-                          {STATUS_MARK[p.data.status]}
-                        </span>{' '}
-                        {p.data.status.toUpperCase()}
-                      </td>
-                      <td class="mono c-year">{p.data.year}</td>
-                    </tr>
-                  );
-                })
-              }
-            </tbody>
-          </table>
-        </div>
+        <ProjectTable rows={hardware} />
       </section>
+
+      {
+        software.length > 0 && (
+          <section class="stack">
+            <h2 class="sec">PROJECTS — SOFTWARE AND HOMELAB</h2>
+            <ProjectTable rows={software} />
+          </section>
+        )
+      }
 
       <section class="stack">
         <h2 class="sec">EXPERIENCE</h2>
@@ -122,6 +95,29 @@ function linkFor(p: (typeof projects)[number]): string | undefined {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section class="stack">
+        <h2 class="sec">SKILLS</h2>
+        <div class="table-wrap">
+          <table class="data skills">
+            <tbody>
+              {
+                profile.skills.map((s) => (
+                  <tr>
+                    <th scope="row" class="col-skill">
+                      {s.label}
+                    </th>
+                    <td>{s.items}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="note">
+          Full history in the <a href="/resume.pdf">resume (PDF)</a>.
+        </p>
       </section>
     </main>
   </div>

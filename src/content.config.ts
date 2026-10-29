@@ -11,6 +11,8 @@ const projects = defineCollection({
     // Position in the projects table (lowest first). Also sets the project number.
     order: z.number(),
     status: z.enum(['active', 'planned', 'shelved', 'done']),
+    // Which table on the home page: hardware (default) or software and homelab.
+    group: z.enum(['hardware', 'software']).default('hardware'),
     year: z.string(),
     // Optional longer date range for the project page, e.g. "Mar–Aug 2023".
     dates: z.string().optional(),

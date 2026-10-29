@@ -4,9 +4,8 @@ order: 1
 status: active
 year: '2026'
 summary: >-
-  Nucleo-G431KB paired with a Basys 3 for running control algorithms built in MATLAB: telemetry in,
-  control math on the FPGA, commands out to the motors. Next step is one board with an STM32G4, an
-  Artix-7 and a gyro, possibly with CAN and ESC handling.
+  Nucleo-G431KB and Basys 3 joined by a CRC-checked SPI register link: telemetry in, control
+  math on the FPGA, motor commands out.
 lede: >-
   An SPI register link between an STM32G431 and an Artix-7 FPGA, and the base of my robotics
   control platform.

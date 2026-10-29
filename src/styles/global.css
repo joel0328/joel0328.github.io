@@ -206,6 +206,10 @@ code {
   align-items: center;
   gap: 8px;
 }
+.note {
+  font: 400 13px/1.5 var(--mono);
+  color: var(--ink-2);
+}
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -263,6 +267,15 @@ table.data tr:last-child td,
 }
 .col-date {
   width: 110px;
+}
+table.data.skills th.col-skill {
+  width: 110px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  padding-top: 12px;
+}
+table.data.skills tr:last-child th.col-skill {
+  border-bottom: 0;
 }
 .row-title {
   font-weight: 700;
