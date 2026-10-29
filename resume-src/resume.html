@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Joel Anthony — Resume</title>
+<style>
+@page { size: Letter; margin: 0.42in 0.5in; }
+:root { --ink:#10233F; --ink2:#3B4A5E; --acc:#1D5FBF; --rule:#9AA6B5; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Inter, 'DejaVu Sans', sans-serif; font-size: 9.2pt; line-height: 1.32; color: var(--ink); }
+header { display:flex; justify-content:space-between; align-items:flex-end; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+h1 { margin:0; font-size: 24pt; line-height: 1; font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; }
+.role { margin-top: 3px; font-size: 10.5pt; font-weight: 600; }
+.contact { text-align: right; font-family: 'DejaVu Sans Mono', monospace; font-size: 8pt; line-height: 1.55; color: var(--ink2); }
+.contact a { color: var(--ink); text-decoration: none; }
+h2 { margin: 9px 0 4px; font-family: 'DejaVu Sans Mono', monospace; font-size: 8pt; font-weight: 600; letter-spacing: 0.1em; color: var(--acc); border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+.summary { margin: 8px 0 0; }
+.job { margin-top: 5px; break-inside: avoid; }
+.job-head { display:flex; justify-content:space-between; gap: 12px; }
+.job-head b { font-weight: 700; }
+.when { font-family: 'DejaVu Sans Mono', monospace; font-size: 8pt; color: var(--ink2); white-space: nowrap; padding-top: 1px; }
+.sub { color: var(--ink2); font-style: italic; }
+ul { margin: 2px 0 0; padding-left: 14px; }
+li { margin: 1px 0; }
+.skills { display:grid; grid-template-columns: 96px 1fr; gap: 2px 10px; }
+.skills dt { font-family: 'DejaVu Sans Mono', monospace; font-size: 7.8pt; color: var(--ink2); padding-top: 1px; }
+.skills dd { margin: 0; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Joel Anthony</h1>
+    <div class="role">Electrical Engineer</div>
+  </div>
+  <div class="contact">
+    Indianapolis, IN · <a href="mailto:janthony0328@gmail.com">janthony0328@gmail.com</a><br>
+    <a href="https://joel0328.github.io">joel0328.github.io</a> · <a href="https://github.com/joel0328">github.com/joel0328</a><br>
+    <a href="https://www.linkedin.com/in/joelanthony1">linkedin.com/in/joelanthony1</a>
+  </div>
+</header>
+
+<p class="summary">Electrical engineer with hands-on experience in STM32 motor-controller firmware, PCB design, CAN and test automation, now owning sensor and switch components for transmission controls. Building an STM32 + FPGA platform for robotics controls on my own time, and starting Purdue's MSECE pathway in Spring 2027.</p>
+
+<h2>EXPERIENCE</h2>
+
+<div class="job">
+  <div class="job-head"><div><b>Allison Transmission</b> — Controls Systems Electro-Mechanical Component Engineer</div><div class="when">Jun 2024 – Present</div></div>
+  <ul>
+    <li>Primary responsible engineer for pressure sensors and pressure switches across conventional, hybrid and electrified propulsion systems.</li>
+    <li>Led the transition from pressure switches to pressure sensors in all Allison on-highway transmissions.</li>
+    <li>Wrote specifications and statements of work for the supplier RFQ on new pressure sensors, and design notebook documentation for pressure switch changes.</li>
+    <li>Identify component requirements with internal and external customers; test and validate hardware.</li>
+    <li>Perform root-cause analysis on embedded control hardware failures, review electrical design decisions in PSpice and OrCAD, and work with suppliers on manufacturing process improvements.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><b>Hydro-Gear</b> — Electrical Engineer <span class="sub">(Product Engineering Intern Apr 2022 – May 2023)</span></div><div class="when">Apr 2022 – Jun 2024</div></div>
+  <ul>
+    <li>Wrote and debugged STM32G4 firmware for electric motor controllers in Keil µVision and STM32CubeIDE, including six-step motor control.</li>
+    <li>Debugged and implemented CAN communication using LabVIEW with NI-XNET, Vehicle Spy and ValueCAN.</li>
+    <li>Streamlined and automated motor efficiency testing on Magtrol dynamometer equipment; implemented NI hardware and software for end-of-line testing.</li>
+    <li>Designed schematics and PCBs in Altium, set up Altium version control, prepared contract-manufacturer documentation and root-caused failed boards; ran DFMEAs.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><b>Applied Intelligence Corporation</b> — Electrical Engineering Intern</div><div class="when">Aug 2021 – Mar 2022</div></div>
+  <ul><li>Built and wired control panels and custom wiring harnesses from customer schematics; produced CNC-engraved labels.</li></ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><b>BorgWarner / Delphi Technologies</b> — Manufacturing and Test Engineering Intern</div><div class="when">May 2019 – Aug 2021</div></div>
+  <ul><li>LabVIEW data acquisition for the manufacturing test group; debugged test equipment and presented findings to management.</li></ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><b>King &amp; Anthony Lawn Care, LLC</b> — Co-Founder</div><div class="when">Apr 2017 – Apr 2021</div></div>
+  <ul><li>Started and ran a lawn care business with a seasonal crew, from client acquisition to equipment and year-end financials.</li></ul>
+</div>
+
+<h2>SELECTED PROJECTS</h2>
+<div class="job">
+  <div class="job-head"><div><b>STM32 + FPGA control platform</b> — SPI register link, Nucleo-G431KB ↔ Basys 3</div><div class="when">2026 – Present</div></div>
+  <ul><li>CRC-checked SPI register protocol with burst transfers, loop-tick and interrupt lines; Verilog RTL, C driver, Icarus testbench and driver-replay test in CI.</li></ul>
+</div>
+<div class="job">
+  <div class="job-head"><div><b>STM32 temperature and humidity monitor</b> — custom Altium PCB, two revisions</div><div class="when">Mar – Aug 2023</div></div>
+  <ul><li>STM32G431 board with BME280, I2C LCD and ESP8266 uploading to ThingSpeak; Nucleo prototype, then Rev A and B.</li></ul>
+</div>
+<div class="job">
+  <div class="job-head"><div><b>CORDIC engine for Tiny Tapeout</b> — sky130 ASIC tile</div><div class="when">2026 – Present</div></div>
+  <ul><li>16-bit fixed-point dual-mode CORDIC with a Python golden model; passes Tiny Tapeout GDS, precheck and gate-level test.</li></ul>
+</div>
+
+<h2>EDUCATION</h2>
+<div class="job">
+  <div class="job-head"><div><b>Purdue University</b> — B.E. Electrical and Electronics Engineering, 2023 · MSECE pathway from Spring 2027</div><div class="when">2019 – 2023</div></div>
+  <ul><li>Senior design: developed a CAN module for Hydro-Gear's vehicles, working closely with Hydro-Gear engineers.</li></ul>
+</div>
+
+<h2>SKILLS</h2>
+<dl class="skills">
+  <dt>EMBEDDED</dt><dd>C, STM32 (HAL, STM32CubeIDE, Keil µVision), CAN, UART/SPI/I2C, six-step motor control</dd>
+  <dt>HARDWARE</dt><dd>Altium Designer, KiCad, OrCAD Capture CIS, PSpice, Fusion 360, PCB bring-up and debug</dd>
+  <dt>FPGA / RTL</dt><dd>Verilog, Xilinx Vivado, Icarus Verilog, Basys 3 and Arty A7</dd>
+  <dt>TEST</dt><dd>LabVIEW, NI-XNET, Vehicle Spy / ValueCAN, Magtrol dynamometers, end-of-line test</dd>
+  <dt>PROCESS</dt><dd>DFMEA, PPAP, RFQ specifications, root-cause analysis, supplier development</dd>
+  <dt>SOFTWARE</dt><dd>Python, Git (GitHub, Bitbucket), Linux / Ubuntu, Raspberry Pi</dd>
+</dl>
+</body>
+</html>

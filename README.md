@@ -45,7 +45,7 @@ updated: October 2026
 
 Name, title block, contact links, general notes and experience are in `src/data/profile.ts`.
 
-To add the resume, drop `resume.pdf` into `public/` and uncomment the Resume PDF line in
+The resume is `public/resume.pdf`; replace that file to update it. The link is in
 `src/data/profile.ts`.
 
 ## Working on it locally (optional)

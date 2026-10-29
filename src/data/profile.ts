@@ -20,8 +20,7 @@ export const profile = {
     { text: 'janthony0328@gmail.com', href: 'mailto:janthony0328@gmail.com' },
     { text: 'github.com/joel0328', href: 'https://github.com/joel0328' },
     { text: 'LinkedIn', href: 'https://www.linkedin.com/in/joelanthony1' },
-    // Add the resume by dropping resume.pdf into public/ and uncommenting:
-    // { text: 'Resume PDF', href: '/resume.pdf' },
+    { text: 'Resume PDF', href: '/resume.pdf' },
   ],
 
   notes: [
