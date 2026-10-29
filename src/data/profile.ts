@@ -35,21 +35,27 @@ export const profile = {
       date: '2024–',
       org: 'Allison Transmission',
       role: 'Controls Systems Electro-Mechanical Component Engineer',
+      detail:
+        'Primary responsible engineer for pressure sensors and pressure switches across conventional, hybrid and electrified transmissions. Requirements, validation, root cause on embedded control hardware failures, and supplier process improvements.',
     },
     {
       date: '2022–24',
       org: 'Hydro-Gear',
       role: 'Electrical Engineer; previously Product Engineering Intern',
+      detail:
+        'STM32G4 motor-controller firmware in Keil and STM32CubeIDE, including six-step control. CAN debugging with LabVIEW/NI-XNET and Vehicle Spy, automated motor efficiency testing on a Magtrol dyno, end-of-line test with NI hardware, Altium board design, and DFMEAs.',
     },
     {
       date: '2021–22',
       org: 'Applied Intelligence Corp.',
       role: 'Electrical Engineering Intern',
+      detail: 'Built and wired control panels and custom harnesses from customer schematics.',
     },
     {
       date: '2019–21',
       org: 'Delphi Technologies / BorgWarner',
       role: 'Test and Manufacturing Engineering Intern',
+      detail: 'LabVIEW data acquisition for the manufacturing test group, and debugging production test equipment.',
     },
   ],
 };

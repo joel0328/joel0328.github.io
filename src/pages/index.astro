@@ -111,7 +111,10 @@ function linkFor(p: (typeof projects)[number]): string | undefined {
                   <tr>
                     <td class="mono">{e.date}</td>
                     <td>
-                      <strong>{e.org}</strong> — {e.role}
+                      <p class="row-title">
+                        {e.org} <span class="row-role">— {e.role}</span>
+                      </p>
+                      {e.detail && <p class="row-sub">{e.detail}</p>}
                     </td>
                   </tr>
                 ))
