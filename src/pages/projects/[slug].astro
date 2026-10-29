@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import Sheet from '../../layouts/Sheet.astro';
+import { STATUS_MARK, projectNumber } from '../../lib/status';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  return all
+    .map((p, i) => ({ params: { slug: p.id }, props: { project: p, num: projectNumber(i) } }))
+    .filter((entry) => entry.props.project.data.page);
+}
+
+const { project, num } = Astro.props;
+const d = project.data;
+const { Content } = await render(project);
+const statusText = `${d.status[0].toUpperCase()}${d.status.slice(1)}, ${d.dates ?? d.year}`;
+---
+
+<Sheet title={`${d.title} — Joel Anthony`} description={d.lede ?? d.summary} variant="detail">
+  <div class="nav">
+    <a href="/">← Joel Anthony / Projects</a>
+    <span>PROJECT {num} · DETAIL SHEET</span>
+  </div>
+
+  <header class="detail-head">
+    <div class="detail-title">
+      <p class="k">PROJECT {num}</p>
+      <h1>{d.title}</h1>
+      <p class="lede">{d.lede ?? d.summary}</p>
+    </div>
+    <div class="hc">
+      <p class="k">STATUS</p>
+      <p class="v">
+        <span class="mark" aria-hidden="true">{STATUS_MARK[d.status]}</span>
+        {statusText}
+      </p>
+    </div>
+    {
+      d.meta.map((cell) => (
+        <div class="hc">
+          <p class="k">{cell.label}</p>
+          {cell.lines.map((line) =>
+            line.href ? (
+              <p class="v">
+                <a href={line.href}>{line.text}</a>
+              </p>
+            ) : (
+              <p class="v">{line.text}</p>
+            ),
+          )}
+        </div>
+      ))
+    }
+  </header>
+
+  <main class="doc">
+    <Content />
+    <p class="doc-foot">
+      {d.updated && <>Updated {d.updated} · </>}<a href="/">back to projects</a>
+    </p>
+  </main>
+</Sheet>

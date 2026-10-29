@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import Sheet from '../layouts/Sheet.astro';
+import { profile } from '../data/profile';
+import { STATUS_MARK, STATUS_ORDER } from '../lib/status';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+function linkFor(p: (typeof projects)[number]): string | undefined {
+  if (p.data.page) return `/projects/${p.id}/`;
+  return p.data.href;
+}
+---
+
+<Sheet title={profile.name} description={profile.description} variant="home">
+  <div class="home">
+    <aside class="titleblock">
+      <div class="tb-cell tb-name">
+        <p class="k">TITLE</p>
+        <h1>Joel<br />Anthony</h1>
+      </div>
+      {
+        profile.titleBlock.map((cell) => (
+          <div class="tb-cell">
+            <p class="k">{cell.label}</p>
+            {cell.lines.map((line) => (
+              <p class="v">{line}</p>
+            ))}
+          </div>
+        ))
+      }
+      <div class="tb-cell">
+        <p class="k">{profile.education.label}</p>
+        <p class="v">{profile.education.primary}</p>
+        <p class="v-sub">{profile.education.secondary}</p>
+      </div>
+      <div class="tb-cell tb-links">
+        <p class="k">CONTACT</p>
+        {profile.contact.map((c) => <a href={c.href}>{c.text}</a>)}
+      </div>
+    </aside>
+
+    <main class="home-main">
+      <section class="stack">
+        <h2 class="sec">GENERAL NOTES</h2>
+        <ol class="notes">
+          {profile.notes.map((n) => <li>{n}</li>)}
+        </ol>
+      </section>
+
+      <section class="stack">
+        <div class="sec-row">
+          <h2 class="sec">PROJECTS</h2>
+          <p class="legend">
+            {STATUS_ORDER.map((s) => <span>{STATUS_MARK[s]} {s}</span>)}
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col" class="col-item">ITEM</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col" class="col-status">STATUS</th>
+                <th scope="col" class="col-year">YEAR</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                projects.map((p, i) => {
+                  const href = linkFor(p);
+                  return (
+                    <tr>
+                      <td class="mono">{i + 1}</td>
+                      <td>
+                        <p class="row-title">{href ? <a href={href}>{p.data.title}</a> : p.data.title}</p>
+                        <p class="row-sub">{p.data.summary}</p>
+                        <p class="row-meta mono" aria-hidden="true">
+                          <span class="mark">{STATUS_MARK[p.data.status]}</span> {p.data.status.toUpperCase()} · {p.data.year}
+                        </p>
+                      </td>
+                      <td class="mono c-status">
+                        <span class="mark" aria-hidden="true">
+                          {STATUS_MARK[p.data.status]}
+                        </span>{' '}
+                        {p.data.status.toUpperCase()}
+                      </td>
+                      <td class="mono c-year">{p.data.year}</td>
+                    </tr>
+                  );
+                })
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2 class="sec">EXPERIENCE</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col" class="col-date">DATE</th>
+                <th scope="col">DESCRIPTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                profile.experience.map((e) => (
+                  <tr>
+                    <td class="mono">{e.date}</td>
+                    <td>
+                      <strong>{e.org}</strong> — {e.role}
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</Sheet>

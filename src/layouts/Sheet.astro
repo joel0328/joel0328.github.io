@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  variant?: 'home' | 'detail';
+}
+
+const { title, description, variant = 'home' } = Astro.props;
+const zones = variant === 'home' ? ['6', '5', '4', '3', '2', '1'] : ['F', 'E', 'D', 'C', 'B', 'A'];
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical.href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body class={`body--${variant}`}>
+    <div class="page">
+      <div class={`sheet sheet--${variant}`}>
+        <div class="inner">
+          <div class="zones" aria-hidden="true">
+            {zones.map((z) => <span>{z}</span>)}
+          </div>
+          <slot />
+          <div class="zones zones--bottom" aria-hidden="true">
+            {zones.map((z) => <span>{z}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
